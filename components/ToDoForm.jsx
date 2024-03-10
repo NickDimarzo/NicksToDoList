@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -9,15 +8,21 @@ import {
   TextInput,
   Button
 } from 'react-native';
+import React, {useState} from 'react';
 
-function ToDoForm() {
+function ToDoForm({addTask}) {
+
+    const [taskText, setTaskText] = React.useState('');
+
     return (
         <View style={styles.form}>
             <TextInput
             style={styles.input}
             placeholder="Add a new task..."
+            value={taskText}
+            onChangeText={(text) => setTaskText(text)}
             />
-            <Button title="Add" />
+            <Button title="Add" onPress={() => addTask(taskText)} />
         </View>
         
     );
